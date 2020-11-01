@@ -2,6 +2,7 @@ package com.jf72.ui;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.concurrent.Flow;
 
 public class ServoUI extends JPanel {
 
@@ -11,7 +12,7 @@ public class ServoUI extends JPanel {
     public ServoUI(int servoNumber){
         this.servoNumber = servoNumber;
 
-
+        setBorder(BorderFactory.createEmptyBorder(0, 20, 0, 0));
 
         setLayout(new BorderLayout());
 
@@ -38,8 +39,13 @@ public class ServoUI extends JPanel {
         sliderPulse.setMajorTickSpacing(1000);
         sliderPulse.setPaintTicks(true);
         sliderPulse.setPaintLabels(true);
+        sliderPulse.setBorder(BorderFactory.createEmptyBorder(0, 25, 0, 25));
+        sliderPulse.addChangeListener(e -> {
+            txtPulse.setText(Integer.toString(sliderPulse.getValue()));
+        });
 
-        contentPanel.add(sliderPulse);
+        contentPanel.add(sliderPulse, BorderLayout.NORTH);
+
         return contentPanel;
     }
 
