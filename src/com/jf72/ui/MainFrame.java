@@ -20,9 +20,24 @@ public class MainFrame extends JFrame {
         // StatusBar
 
         // Content
+        getContentPane().add(createContent());
 
         setVisible(true);
     }
+
+    /***************************************************************************/
+    /*      CONTENT       */
+    private JPanel createContent(){
+        JPanel mainPanel = new JPanel();
+        mainPanel.setLayout(new GridLayout(4, 8));
+
+        for(int i = 0; i < 32; i++){
+            mainPanel.add(new ServoUI(i));
+        }
+
+        return mainPanel;
+    }
+
 
     /***************************************************************************/
     /*      TOOLBAR       */
